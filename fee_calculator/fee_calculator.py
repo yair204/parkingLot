@@ -3,9 +3,10 @@ import math
 
 
 class Ticket:
-    def __init__(self, time, date) -> None:
+    def __init__(self, time, date, type_vic) -> None:
         self.time = time
         self.date = date
+        self.type_vic = type_vic
 
     def get_time(self):
         return self.time
@@ -14,7 +15,7 @@ class Ticket:
         return self.date
 
 
-a = Ticket("22:51", "20230204")
+a = Ticket("08:51", "20230204", "M")
 
 
 def calculate_time(Ticket: object) -> int:
@@ -44,7 +45,7 @@ def calculate_time(Ticket: object) -> int:
             )  # total time rounded up.
 
 
-def calculate_price(Ticket: object) -> int:
+def calculate_price(Ticket: object, price_of_days=480) -> int:
     """Calculates the price of parking according to the hours and type of vehicle
 
     Args:
@@ -53,13 +54,19 @@ def calculate_price(Ticket: object) -> int:
         int: The final price required
     """
     hours = calculate_time(a)
-    if hours > 24:
-        print("+100")
-    if hours > 3:
+    print(hours)
+    total = 0
+    exceeding_rate = 0
+    if hours > 24:  # Extra charge over 24 hours
+        days, hours = divmod(hours, 24)
+        total = days * price_of_days + 100 * days
+    if hours > 3:  # Extra charge over 3 hours
+        exceeding_rate = hours - 3
         if a.type_vic == "L":
-            print("L")
+            total += exceeding_rate * 40
         elif a.type_vic == "M":
-            print("M")
-        else:
-            print("S")
-    return 20 * hours
+            total += exceeding_rate * 30
+    return total + (hours - exceeding_rate) * 20  # total price
+
+
+calculate_price(a)
