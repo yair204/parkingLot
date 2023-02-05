@@ -169,20 +169,17 @@ def run_gui() -> None:
     while True:  # Event Loop
         window, event, values = sg.read_all_windows()
         
-        print(window)
-        # log_window =None
-
         if event in [sg.WIN_CLOSED, "Exit","Cancel"]:
             window.close()
         
             check_event_of_window_closed(window,list_windows)
             if validate_status_of_windows(list_windows):
                 break
-        if window == log_window and is_valid_input(event, values):
+        if window == list_windows[0] and is_valid_input(event, values):
             window.close()
             list_windows[0] = None
             list_windows[1] = initialization_window()
-        if  window == init_window and event == "start":
+        if  window == list_windows[1] and event == "start":
              window.close()
              list_windows[1] = None
              list_windows[2] = main_window()
