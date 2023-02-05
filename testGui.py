@@ -1,7 +1,9 @@
 import PySimpleGUI as sg
 
-def log_in_window() -> None:
-    """log in to system parking lot"""
+def log_in_window() -> sg.Window:
+    """log in to system parking lot 
+    """
+    
     sg.theme("BluePurple")  # Add a touch of color
     # All the stuff inside your window.
     layout = [
@@ -11,9 +13,10 @@ def log_in_window() -> None:
         [sg.Text("")],
         [sg.Button("log-in", size=(6, 2)), sg.Cancel(size=(6, 2))],
     ]
-    # Create the Window
-    return sg.Window(title="Parking system", layout=layout, size=(600, 250),finalize=True)
-def initialization():
+    
+    return sg.Window(title="Parking system", layout=layout, size=(600, 250),finalize=True) # return window
+
+def initialization_window() -> sg.Window:
     """The system settings. (the amount of parking spaces and their types)"""
     sg.theme("BluePurple")  # Add a touch of color
     # All the stuff inside your window.
@@ -43,7 +46,54 @@ def initialization():
         [sg.Button("start", size=(6, 2)), sg.Exit(size=(6, 2))],
     ]
     # Create the Window
-    return sg.Window(title="Parking system", layout=layout, size=(650, 250),finalize=True)
+    return sg.Window(title="Parking system", layout=layout, size=(650, 250),finalize=True) # return window
+
+
+def main_window():
+    sg.theme("BlueMono")
+    layout = [
+        [
+            sg.Button("Add_car", size=(6, 4)),
+            sg.Button("Remove_car", size=(6, 4)),
+            sg.Button("Reports", size=(6, 4), pad=((350, 50), 50)),
+        ],
+        
+        [sg.Button("check_capacity", size=(6, 4))],
+        [sg.Button("add_gate", size=(6, 4))],
+        [sg.Button("Exit")],
+    ]
+
+    return sg.Window("My new window", layout, size=(900, 700), finalize=True) # return window
+
+
+def window_add_car() -> sg.Window:
+    """
+    enter the car details
+    Returns:
+        sg.Window : gui window
+    """
+    layout = [[sg.Text("enter_color",size=(20,1)), sg.InputText(key='-COLOR-')], 
+              
+              [sg.Text("enter_company_name",size=(20,1)), sg.InputText(key='-COMPANY-')],
+              [sg.Text("enter_id_of car",size=(20,1)), sg.InputText(key='-ID-')],
+              [sg.Text("enter_type_of_car",size=(20,1)), sg.InputText(key='-TYPE-')],
+                [sg.Text("choose_gate",size=(20,1)),sg.InputOptionMenu('ABC',key= '-GATE-')],
+                
+              [sg.Button("Exit"),sg.Button('Submit_Car')]]
+    
+    return sg.Window("Second Window", layout, finalize=True) # return window
+
+def window_remove_car() -> sg.Window:
+    """
+    enter the car you want to remove
+    Returns:
+        sg.Window: gui window
+    """
+    layout =[[sg.Text("enter_id_of_car"),sg.InputText(key='-ID_REMOVE-')],
+            [sg.Button('Submit_exit_car')]]
+    
+    return sg.Window("Remove car", layout, finalize=True) # return window
+
 def is_valid_input(event: object, values: dict) -> bool:
     """Checks validity of username and password
 
@@ -67,83 +117,88 @@ def is_valid_input(event: object, values: dict) -> bool:
         else:
             sg.popup("Fill all the fields", title="ERROR", font=10)
 
-def main_window():
-    sg.theme("BlueMono")
-    layout = [
-        [
-            sg.Button("Add_car", size=(6, 4)),
-            sg.Button("Remove_car", size=(6, 4)),
-            sg.Button("Reports", size=(6, 4), pad=((350, 50), 50)),
-        ],
+
+def check_event_of_window_closed(window: sg.Window  ,list_windows) -> None:
+    """
+    check what window have been closed and mark the window as None
+
+    Args:
+        window (sg.Window): gui window
+        list_windows (sg.Window): list of all the windows
+    """
+    if window == list_windows[0]:
+        list_windows[0] = None
         
-        [sg.Button("check_capacity", size=(6, 4))],
-        [sg.Button("add_gate", size=(6, 4))],
-        [sg.Button("Exit")],
-    ]
+    elif window == list_windows[1]:
+        list_windows[1]= None
+    elif window == list_windows[2]:
+        list_windows[2] =None
+    elif window == list_windows[3]:
+        list_windows[3] = None
+    elif window == list_windows[4]:
+        list_windows[4] = None
 
-    return sg.Window("My new window", layout, size=(900, 700), finalize=True)
 
-
-def make_win_add_car():
-    layout = [[sg.Text("enter_color",size=(20,1)), sg.InputText(key='-COLOR-')], 
-              
-              [sg.Text("enter_company_name",size=(20,1)), sg.InputText(key='-COMPANY-')],
-              [sg.Text("enter_id_of car",size=(20,1)), sg.InputText(key='-ID-')],
-              [sg.Text("enter_type_of_car",size=(20,1)), sg.InputText(key='-TYPE-')],
-                [sg.Text("choose_gate",size=(20,1)),sg.InputOptionMenu('ABC',key= '-GATE-')],
-                
-              [sg.Button("Exit"),sg.Button('Submit_Car')]]
     
-    return sg.Window("Second Window", layout, finalize=True)
+def validate_status_of_windows(windows_list: sg.Window) -> bool:
+    """
+    check if all the windows are equals to None
 
-def make_window_remove_car():
-    layout =[[sg.Text("enter_id_of_car"),sg.InputText(key='-ID_REMOVE-')],
-             sg.Button('Submit_exit_car')]
-    return sg.Window("Remove car", layout, finalize=True)
+    Args:
+        windows_list (sg.Window): list of all windows
+
+    Returns:
+        bool: if all the windows equals to None return True
+    """
+    return (
+        not windows_list[0]
+        and not windows_list[1]
+        and not windows_list[2]
+        and not windows_list[3]
+        and not windows_list[4]
+    )
+    
 
 
-# def check_which_window_closed(window: object,  )
-def run_gui():
+def run_gui() -> None:
+    """
+    handle the windows and the events 
+    """
     log_window,init_window,control_window, add_car_window, remove_car_window = log_in_window(), None ,None, None ,None
+    list_windows = [log_window,init_window,control_window, add_car_window, remove_car_window ]
     while True:  # Event Loop
         window, event, values = sg.read_all_windows()
+        
+        print(window)
+        # log_window =None
 
-        if event in [sg.WIN_CLOSED, "Exit"]:
+        if event in [sg.WIN_CLOSED, "Exit","Cancel"]:
             window.close()
-            if window == control_window:  # if closing win 2, mark as closed
-                control_window = None
-            elif window == add_car_window:
-                add_car_window = None
-            elif window == remove_car_window:
-                remove_car_window =None
-            elif window == log_window:
-                log_window = None
-            elif window == init_window:
-                init_window = None
-
-            if not log_window and not init_window and not control_window and not add_car_window and not remove_car_window:  # if closing win 1, exit program
+        
+            check_event_of_window_closed(window,list_windows)
+            if validate_status_of_windows(list_windows):
                 break
         if window == log_window and is_valid_input(event, values):
             window.close()
-            log_window = None
-            initialization()
-        if  event == "start":
+            list_windows[0] = None
+            list_windows[1] = initialization_window()
+        if  window == init_window and event == "start":
              window.close()
-             init_window = None
-             main_window()
+             list_windows[1] = None
+             list_windows[2] = main_window()
         if event == "Add_car" and not add_car_window:
-            add_car_window = make_win_add_car()
+            list_windows[3] = window_add_car()
 
         if event == "Remove_car" and not remove_car_window:
-            make_window_remove_car()
+            list_windows[4] = window_remove_car()
 
         if event == "Submit_Car":
-            add_car_window.close()
-            add_car_window = None
+            window.close()
+            list_windows[3] = None
             sg.popup(f"time of entrance\n slot number...\n color:{values['-COLOR-']}" )
         if event == "Submit_exit_car":
             window.close()
-            remove_car_window = None
+            list_windows[4] = None
             sg.popup("you pay is.. ")
 
 
