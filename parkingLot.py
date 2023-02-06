@@ -4,6 +4,12 @@ import ticket
 import time
 
 class AutomatedParkingLot:
+    """
+        Class AutomatedParkingLot generate parking lot
+            with 3 type of slots SP, MP, LP
+        Attr
+    
+    """
     def __init__(self,S_slots:int,M_slots:int,L_slots:int) -> None:
         self.S_slots = S_slots
         self.M_slots = M_slots
@@ -14,7 +20,8 @@ class AutomatedParkingLot:
         self.slots_SP_list = [] 
         self.slots_MP_list = []
         self.slots_LP_list = []
-        self.vehicle_list = []
+        
+        self.vehicle_dict = {}
         
         
     def allocate_n_slots(self):
@@ -31,19 +38,19 @@ class AutomatedParkingLot:
             self.slots_LP_list.append(slot_)
             
     
-    def park_vehicle(self,ticket_obj,compony, plate_num, color,car_type,gate):
+    def park_vehicle(self,compony, plate_num, color,car_type,gate):
         
         if car_type == "S":  
-            self.vehicle_list.append(vehicle.Bike(compony, plate_num, color, car_type))
-            return ticket_obj.add_to_csvFile(self.allocate_nearly_slot(gate,self.slots_SP_list),car_type,compony,plate_num,color,time.strftime("%Y%m%d"),time.strftime("%H%M"),0)
+            self.vehicle_dict[self.allocate_nearly_slot(gate,self.slots_SP_list)] = vehicle.Bike(compony, plate_num, color, car_type)
+            # return ticket_obj.add_to_csvFile(self.allocate_nearly_slot(gate,self.slots_SP_list),car_type,compony,plate_num,color,time.strftime("%Y%m%d"),time.strftime("%H%M"),0)
         
         if car_type == "M":
-            self.vehicle_list.append(vehicle.Car(compony, plate_num, color,car_type))
-            return ticket_obj.add_to_csvFile(self.allocate_nearly_slot(gate,self.slots_MP_list),car_type,compony,plate_num,color,time.strftime("%Y%m%d"),time.strftime("%H%M"),0)
+            self.vehicle_dict[self.allocate_nearly_slot(gate,self.slots_MP_list)] = vehicle.Car(compony, plate_num, color,car_type)
+            # return ticket_obj.add_to_csvFile(self.allocate_nearly_slot(gate,self.slots_MP_list),car_type,compony,plate_num,color,time.strftime("%Y%m%d"),time.strftime("%H%M"),0)
                
         if car_type == "L": 
-            self.vehicle_list.append(vehicle.Bus(compony, plate_num, color,car_type))
-            return ticket_obj.add_to_csvFile(self.allocate_nearly_slot(gate,self.slots_LP_list),car_type,compony,plate_num,color,time.strftime("%Y%m%d"),time.strftime("%H%M"),0)
+            self.vehicle_dict[self.allocate_nearly_slot(gate,self.slots_LP_list)] = vehicle.Bus(compony, plate_num, color,car_type)
+            # return ticket_obj.add_to_csvFile(self.allocate_nearly_slot(gate,self.slots_LP_list),car_type,compony,plate_num,color,time.strftime("%Y%m%d"),time.strftime("%H%M"),0)
         
     def unpark_vehicle(self):
         pass
@@ -87,9 +94,9 @@ class AutomatedParkingLot:
         
 
 
-a = AutomatedParkingLot(21)
-a.allocate_n_slots()
-b = []
-b.extend(i.ID for i in a.slots_LP_list)
-print(b)
+# a = AutomatedParkingLot(7,7,7)
+# a.allocate_n_slots()
+# b = []
+# b.extend(i.ID for i in a.slots_LP_list)
+# print(b)
 

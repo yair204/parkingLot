@@ -1,7 +1,29 @@
 
 
 class Vehicle:
-   
+    """Defined abstract vehicle class
+
+        Attribute:
+
+            compony:str
+                car compony
+            
+            plate_num:int
+                car's plate number
+                
+            color:str
+                car's color
+
+        Methods:
+            get_car_compony:
+            get_plate_num:
+            get_color:
+           
+        Return:
+            vehicle
+
+    """
+
    
     def __init__(self,compony:str,plate_num:int,color:str) -> None:
         self.compony = compony
@@ -18,32 +40,61 @@ class Vehicle:
         return self.color
    
     
-    
 class Car(Vehicle):
+    """
+        Class Car inheritor from Vehicle class
+
+    Args:
+        Vehicle (_type_): str
+            type of car
+            
+    Methods:
+        get_vehicle_attributes()
+    """
     def __init__(self, compony: str, plate_num: int, color: str,type:str) -> None:
         super().__init__(compony, plate_num, color)
         self.type = type
      
-    def get_car_type(self):
-        return self.type
+    def get_vehicle_attributes(self):
+        return self.type,self.color,self.plate_num,self.compony
         
 
 class Bus(Vehicle):
+    """
+        Class Bus inheritor from Vehicle class
+
+    Args:
+        Vehicle (_type_): str
+            type of bus
+            
+    Methods:
+        get_vehicle_attributes()
+    """
     def __init__(self, compony: str, plate_num: int, color: str,type:str) -> None:
         super().__init__(compony, plate_num, color)
         self.type = type
     
-    def get_car_type(self):
-        return self.type
+    def get_vehicle_attributes(self):
+        return self.type,self.color,self.plate_num,self.compony
                
         
 class Bike(Vehicle):
+    """
+        Class bike inheritor from Vehicle class
+
+    Args:
+        Vehicle (_type_): str
+            type of bike
+            
+    Methods:
+        get_vehicle_attributes()
+    """
     def __init__(self, compony: str, plate_num: int, color: str,type:str) -> None:
         super().__init__(compony, plate_num, color)
         self.type = type  
      
-    def get_car_type(self):
-        return self.type
+    def get_vehicle_attributes(self):
+        return self.type,self.color,self.plate_num,self.compony
         
               
         
