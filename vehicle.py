@@ -1,6 +1,8 @@
 
 
 class Vehicle:
+   
+   
     def __init__(self,compony:str,plate_num:int,color:str) -> None:
         self.compony = compony
         self.plate_num = plate_num

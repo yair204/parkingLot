@@ -4,8 +4,10 @@ import ticket
 import time
 
 class AutomatedParkingLot:
-    def __init__(self,capacity:int) -> None:
-        self.capacity = capacity
+    def __init__(self,S_slots:int,M_slots:int,L_slots:int) -> None:
+        self.S_slots = S_slots
+        self.M_slots = M_slots
+        self.L_slots = L_slots
         self.gate_A = "A"
         self.gate_B = "B"
         self.gate_C = "C"
@@ -16,16 +18,16 @@ class AutomatedParkingLot:
         
         
     def allocate_n_slots(self):
-        for slot in range(self.capacity//3): 
-            slot_ = parking_slot.ParkingSlot("SP" ,slot,True)
+        for slot in range(self.S_slots): 
+            slot_ = parking_slot.ParkingSlot("SP" ,f"S{slot}",True)
             self.slots_SP_list.append(slot_)
 
-        for slot in range(self.capacity//3,(self.capacity*2)//3): 
-            slot_ = parking_slot.ParkingSlot("MP" ,slot,True) 
+        for slot in range(self.M_slots): 
+            slot_ = parking_slot.ParkingSlot("MP" ,f"M{slot}",True) 
             self.slots_MP_list.append(slot_)
 
-        for slot in range((self.capacity*2)//3,self.capacity): 
-            slot_ = parking_slot.ParkingSlot("LP" ,slot,True) 
+        for slot in range(self.L_slots): 
+            slot_ = parking_slot.ParkingSlot("LP" ,f"L{slot}",True) 
             self.slots_LP_list.append(slot_)
             
     

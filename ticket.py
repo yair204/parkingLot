@@ -23,7 +23,7 @@ class Ticket:
         with open(self.filename, 'a+', newline='') as csv_file:
             self.writer = csv.writer(csv_file)
             self.writer.writerow(list_)  
-        
+        return list_
         
         
       
