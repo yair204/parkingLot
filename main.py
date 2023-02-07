@@ -31,20 +31,26 @@ def main():
         if  events.is_open_window_remove_car( windows_list,event):
             wd.add_window(windows_list, 4,wd.window_remove_car)
 
-        if event == "Submit_Car":
-            instants_of_parking_lot.park_vehicle(values['COMPANY'], values['ID'], values['COLOR'],values['TYPE'], values['GATE'])
-            print(instants_of_parking_lot.vehicle_dict)
-            window.close()
+        if event == "Submit_Car" and events.validate_input_car_details(values):
+
+            current_slot =  instants_of_parking_lot.park_vehicle(values['COMPANY'], int(values['ID']), values['COLOR'],values['TYPE'], values['GATE'])
             
+            windows_list[2][current_slot].update(background_color = values['COLOR'])
+            window.close() 
             windows_list[3] = None
-            sg.popup(f"time of entrance\n slot number...\n color:{values['COLOR']}" )
+            slot_id,type,plate_number,company,color,date=instants_of_parking_lot.tickets_list[-1].return_ticket()
+            sg.popup(f"Car type is: {type}\nname of company is: {company}\n color is: {color}\n id of car is {plate_number}\ndate of entrance is: {date}\n number of slot is: {slot_id}",font=(20,20))
+
         if event == "Submit_exit_car":
+            price,slot_id = instants_of_parking_lot.remove_vehicle(int(values['ID_REMOVE']))
+            windows_list[2][slot_id].update(background_color = "white")
             window.close()
             windows_list[4] = None
-            sg.popup("you pay is.. ")
-
+            sg.popup(f"you pay is{price} ")
+            
         if event == "Reports" and not windows_list[5]:
             windows_list[5] = wd.reports_window()
+
         if event == "Submit report" :
             window.close()
             windows_list[5] = None

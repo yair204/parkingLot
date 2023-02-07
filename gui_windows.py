@@ -105,7 +105,7 @@ def main_window():
                             sg.Text(f"slotS{str(slot)}",
                                size=(6, 5),
                                 background_color="white",
-                                key=f"slotS{str(slot)}",
+                                key=f"S{str(slot)}",
                             )
                             for slot in range(10)
                         ],
@@ -113,7 +113,7 @@ def main_window():
                             sg.Text(f"slotS{str(slot)}",
                                size=(6, 5),
                                 background_color="white",
-                                key=f"slotS{str(slot)}",
+                                key=f"S{str(slot)}",
                             )
                             for slot in range(10, 20)
                         ],
@@ -121,7 +121,7 @@ def main_window():
                             sg.Text(f"slotM{str(slot)}",
                                 size=(6, 5),
                                 background_color="white",
-                                key=f"slotM{str(slot)}",
+                                key=f"M{str(slot)}",
                             )
                             for slot in range(10)
                         ],
@@ -129,7 +129,7 @@ def main_window():
                             sg.Text(f"slotM{str(slot)}",
                                 size=(6, 5),
                                 background_color="white",
-                                key=f"slotM{str(slot)}",
+                                key=f"M{str(slot)}",
                             )
                             for slot in range(10, 20)
                         ],
@@ -137,7 +137,7 @@ def main_window():
                             sg.Text(f"slotL{str(slot)}",
                                 size=(6, 5),
                                 background_color="white",
-                                key=f"slotL{str(slot)}",
+                                key=f"L{str(slot)}",
                             )
                             for slot in range(10)
                         ],
@@ -145,7 +145,7 @@ def main_window():
                             sg.Text(f"slotL{str(slot)}",
                                 size=(6, 5),
                                 background_color="white",
-                                key=f"slotL{str(slot)}",
+                                key=f"L{str(slot)}",
                             )
                             for slot in range(10, 20)
                         ],
@@ -185,7 +185,7 @@ def window_add_car() -> sg.Window:
         sg.Window : gui window
     """
     layout = [
-        [sg.Text("enter_color", size=(20, 1)), sg.InputText(key="COLOR")],
+        [sg.Text("choose color of car", size=(20, 1)),sg.DropDown(["red","green", "yellow","purple","cyan","pink","blue","orange"], key ="COLOR")],
         [sg.Text("Enter company name", size=(20, 1)), sg.InputText(key="COMPANY")],
         [sg.Text("Enter plate number ", size=(20, 1)), sg.InputText(key="ID")],
         [sg.Text("Enter type of vehicle", size=(20, 1)), sg.InputText(key="TYPE")],
@@ -203,7 +203,7 @@ def window_remove_car() -> sg.Window:
         sg.Window: gui window
     """
     layout = [
-        [sg.Text("enter_id_of_car"), sg.InputText(key="-ID_REMOVE-")],
+        [sg.Text("enter_id_of_car"), sg.InputText(key="ID_REMOVE")],
         [sg.Button("Submit_exit_car")],
     ]
 

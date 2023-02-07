@@ -58,7 +58,35 @@ def is_open_window_add_car( windows_list: list[sg.Window], event: object) -> boo
 
 def is_open_window_remove_car( windows_list: list[sg.Window], event: object) -> bool:
     return event == "Remove car" and not windows_list[4]
+def validate_input_car_details(values: sg) -> bool:
+    if values['COLOR'] not in["red","green", "yellow","purple","cyan","pink","blue","orange"]:
+        sg.popup("Enter valid color" ,title="Error input",font=(20,20))
+        return False
+
+    if not values['COMPANY']:
+        sg.popup("Enter company name" ,title="Error input",font=(20,20))
+        return False
+
+    if not values['ID']:
+        sg.popup("Enter plate number" ,title="Error input",font=(20,20))
+        return False
+    else:
+        try:
+            int(values['ID'])
+
+        except Exception:
+            sg.popup("Enter plate number integer " ,title="Error input",font=(20,20))
+            return False
+
+    if values['TYPE'] not in ["S", "L", "M"]:
+        sg.popup("Enter types of S, L, M  " ,title="Error input",font=(20,20))
+        return False
+    
+    if not values['GATE']:
+        sg.popup("Choose gate " ,title="Error input",font=(20,20))
+        return False
+    
 
 
-
+    return True
 
