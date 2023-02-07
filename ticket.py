@@ -1,4 +1,3 @@
-
 from datetime import datetime
 import time
 import math
@@ -14,9 +13,6 @@ class Ticket:
         self.color_vehicle = vehicle_obj.color
        
         self.entry_time = datetime.now()
-        
-        
-        self.filename = "data.csv"
 
     def get_time(self):
         return self.entry_time
@@ -27,18 +23,7 @@ class Ticket:
     def get_plate_num(self):
         return self.plate_num
 
-    def set_csv_file(self):
-        
-        headers = ["slot_ID","type_car","compony","plat_number","color","date","entry time","exit time"]
-        with open(self.filename, 'w', newline='') as csv_file:
-            self.writer = csv.writer(csv_file)
-            self.writer.writerow(headers)
-           
-    def add_to_csvFile(self,*list_):
-        with open(self.filename, 'a+', newline='') as csv_file:
-            self.writer = csv.writer(csv_file)
-            self.writer.writerow(list_)  
-        return list_
+    
         
         
       
