@@ -9,9 +9,8 @@ class Ticket:
         self.vehicle_obj = vehicle_obj
         self.type_vehicle = vehicle_obj.type
         self.plate_num = vehicle_obj.plate_num
-        self.compony_vehicle = vehicle_obj.compony
+        self.company_vehicle = vehicle_obj.company
         self.color_vehicle = vehicle_obj.color
-       
         self.entry_time = datetime.now()
 
     def get_time(self):
@@ -22,6 +21,12 @@ class Ticket:
     
     def get_plate_num(self):
         return self.plate_num
+    
+    def return_ticket(self):
+        
+        return  self.slot_ID , self.type_vehicle , self.plate_num ,self.company_vehicle ,self.color_vehicle ,self.entry_time
+
+        
 
     
         
