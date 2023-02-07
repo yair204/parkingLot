@@ -1,7 +1,9 @@
 import parking_slot
 import vehicle
 import ticket
+from datetime import datetime
 import time
+import fee_calculator
 
 class AutomatedParkingLot:
     """
@@ -14,14 +16,16 @@ class AutomatedParkingLot:
         self.S_slots = S_slots
         self.M_slots = M_slots
         self.L_slots = L_slots
+        
         self.gate_A = "A"
         self.gate_B = "B"
         self.gate_C = "C"
+        
         self.slots_SP_list = [] 
         self.slots_MP_list = []
         self.slots_LP_list = []
         
-        self.vehicle_dict = {}
+        self.tickets_list = []
         
         
     def allocate_n_slots(self):
@@ -41,19 +45,42 @@ class AutomatedParkingLot:
     def park_vehicle(self,compony, plate_num, color,car_type,gate):
         
         if car_type == "S":  
-            self.vehicle_dict[self.allocate_nearly_slot(gate,self.slots_SP_list)] = vehicle.Bike(compony, plate_num, color, car_type)
+            self.tickets_list.append(ticket.Ticket(self.allocate_nearly_slot(gate,self.slots_SP_list),vehicle.Bike(compony, plate_num, color, car_type)))
             # return ticket_obj.add_to_csvFile(self.allocate_nearly_slot(gate,self.slots_SP_list),car_type,compony,plate_num,color,time.strftime("%Y%m%d"),time.strftime("%H%M"),0)
         
         if car_type == "M":
-            self.vehicle_dict[self.allocate_nearly_slot(gate,self.slots_MP_list)] = vehicle.Car(compony, plate_num, color,car_type)
+            self.tickets_list.append(ticket.Ticket(self.allocate_nearly_slot(gate,self.slots_MP_list),vehicle.Car(compony, plate_num, color, car_type)))
             # return ticket_obj.add_to_csvFile(self.allocate_nearly_slot(gate,self.slots_MP_list),car_type,compony,plate_num,color,time.strftime("%Y%m%d"),time.strftime("%H%M"),0)
                
         if car_type == "L": 
-            self.vehicle_dict[self.allocate_nearly_slot(gate,self.slots_LP_list)] = vehicle.Bus(compony, plate_num, color,car_type)
+            self.tickets_list.append(ticket.Ticket(self.allocate_nearly_slot(gate,self.slots_LP_list),vehicle.Bus(compony, plate_num, color, car_type)))
             # return ticket_obj.add_to_csvFile(self.allocate_nearly_slot(gate,self.slots_LP_list),car_type,compony,plate_num,color,time.strftime("%Y%m%d"),time.strftime("%H%M"),0)
         
-    def unpark_vehicle(self):
-        pass
+    def remove_vehicle(self,plate_num):
+        
+        for ticket in self.tickets_list:
+            if plate_num == ticket.get_plate_num():
+                
+                if ticket.type_vehicle == "S":
+                    for s in self.slots_SP_list:
+                        if s.ID == ticket.slot_ID:
+                            s.is_empty = True
+                            
+                elif ticket.type_vehicle == "M":
+                    for m in self.slots_MP_list:
+                        if m.ID == ticket.slot_ID:
+                            m.is_empty = True 
+
+                else:
+                    for l in self.slots_LP_list:
+                        if l.ID == ticket.slot_ID:
+                            l.is_empty = True
+
+                self.tickets_list.remove(ticket)
+                print(fee_calculator.calculate_price(ticket))
+                break
+                
+   
     
     def allocate_nearly_slot(self,gate:str,slots_list:list):
         

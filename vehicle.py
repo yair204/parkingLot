@@ -24,7 +24,6 @@ class Vehicle:
 
     """
 
-   
     def __init__(self,compony:str,plate_num:int,color:str) -> None:
         self.compony = compony
         self.plate_num = plate_num
@@ -56,7 +55,7 @@ class Car(Vehicle):
         self.type = type
      
     def get_vehicle_attributes(self):
-        return self.type,self.color,self.plate_num,self.compony
+        return self.type, self.color, self.plate_num, self.compony
         
 
 class Bus(Vehicle):

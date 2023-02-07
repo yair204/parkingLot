@@ -11,4 +11,6 @@ class ParkingSlot:
     
     def remove_vehicle(self):
         print("The vehicle successfully removed!")
-    
+        
+        
+    #TODO 
