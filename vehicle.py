@@ -5,8 +5,8 @@ class Vehicle:
 
         Attribute:
 
-            compony:str
-                car compony
+            company:str
+                car company
             
             plate_num:int
                 car's plate number
@@ -15,7 +15,7 @@ class Vehicle:
                 car's color
 
         Methods:
-            get_car_compony:
+            get_car_company:
             get_plate_num:
             get_color:
            
@@ -24,13 +24,13 @@ class Vehicle:
 
     """
 
-    def __init__(self,compony:str,plate_num:int,color:str) -> None:
-        self.compony = compony
+    def __init__(self,company:str,plate_num:int,color:str) -> None:
+        self.company = company
         self.plate_num = plate_num
         self.color = color
        
-    def get_car_compony(self):
-        return self.compony
+    def get_car_company(self):
+        return self.company
     
     def get_plate_num(self):
         return self.plate_num
@@ -50,12 +50,12 @@ class Car(Vehicle):
     Methods:
         get_vehicle_attributes()
     """
-    def __init__(self, compony: str, plate_num: int, color: str,type:str) -> None:
-        super().__init__(compony, plate_num, color)
+    def __init__(self, company: str, plate_num: int, color: str,type:str) -> None:
+        super().__init__(company, plate_num, color)
         self.type = type
      
     def get_vehicle_attributes(self):
-        return self.type, self.color, self.plate_num, self.compony
+        return self.type, self.color, self.plate_num, self.company
         
 
 class Bus(Vehicle):
@@ -69,12 +69,12 @@ class Bus(Vehicle):
     Methods:
         get_vehicle_attributes()
     """
-    def __init__(self, compony: str, plate_num: int, color: str,type:str) -> None:
-        super().__init__(compony, plate_num, color)
+    def __init__(self, company: str, plate_num: int, color: str,type:str) -> None:
+        super().__init__(company, plate_num, color)
         self.type = type
     
     def get_vehicle_attributes(self):
-        return self.type,self.color,self.plate_num,self.compony
+        return self.type,self.color,self.plate_num,self.company
                
         
 class Bike(Vehicle):
@@ -88,17 +88,17 @@ class Bike(Vehicle):
     Methods:
         get_vehicle_attributes()
     """
-    def __init__(self, compony: str, plate_num: int, color: str,type:str) -> None:
-        super().__init__(compony, plate_num, color)
+    def __init__(self, company: str, plate_num: int, color: str,type:str) -> None:
+        super().__init__(company, plate_num, color)
         self.type = type  
      
     def get_vehicle_attributes(self):
-        return self.type,self.color,self.plate_num,self.compony
+        return self.type,self.color,self.plate_num,self.company
         
               
         
 # a = Car("corolla" , 1234567,"white","A")
 
-# print(a.get_car_compony())
+# print(a.get_car_company())
 # print(a.get_plate_num())
 # print(a.get_car_type())

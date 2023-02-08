@@ -19,8 +19,9 @@ def main():
     parking_lot_obj.remove_vehicle(900)
     
     print("\nafter removing\n")
+    
     for i in parking_lot_obj.tickets_list:
-        print(i.entry_time)
+        print(i.slot_ID)
     
     
     
