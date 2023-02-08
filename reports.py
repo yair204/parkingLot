@@ -80,6 +80,4 @@ def vehicle_parked_in_period_time(fileName:str) -> int:
 def parked_more_24_hours(AutomatedParkingLot: object) -> list[int]:
     return [ticket.plate_num for ticket in AutomatedParkingLot.tickets_list if fee_calculator.calculate_time(ticket)> 24]    
     
-    
-       
 print(vehicle_parked_in_period_time('data.csv'))
