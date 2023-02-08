@@ -29,7 +29,7 @@ def specific_company(AutomatedParkingLot: object, company: str)->list:
     Returns:
         list: The amount of free parking, and the amount of occupancy
     """
-    slots_full =[ticket.plate_num for ticket in AutomatedParkingLot.tickets_list if ticket.compony_vehicle == company]
+    slots_full =[ticket.plate_num for ticket in AutomatedParkingLot.tickets_list if ticket.company_vehicle == company]
   
     return [f"plate number of all the vehicles they are -{company}- : {slots_full}"]
 
@@ -83,6 +83,9 @@ def parked_more_24_hours(AutomatedParkingLot: object) -> list[int]:
     
 # print(vehicle_parked_in_period_time('data.csv'))
 class ReportEntries:
+    """
+    create static values
+    """
     gateA =0
     gateB =0
     gateC =0

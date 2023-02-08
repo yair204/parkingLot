@@ -6,25 +6,34 @@ import logger_parking_lot as lg
 import enums as enm 
 
 def reports_window() -> sg.Window:
+    """
+    create the window of reports
+
+    Returns:
+        sg.Window: window
+    """
    
     list_of_reports = [
         "current capacity",
-        "vehicles by company",
-        "vehicles of a certain color",
-        "vehicles of a certain type",
-        "slot of vehicle by plate no",
-        "vehicles parked during a period of time",
-        "income during a certain period of time",
         "number of entries per each entry points",
-        "vehicles that parked more than 24 hours"
+        "vehicles that parked more than 24 hours",
     ]
-    layout = [[sg.Listbox(list_of_reports,font=(10,10), size=(40, 10), key="list of reports")],
-              
-              [sg.Button("Submit report", size=(10,20)),sg.Button("Exit", size=(10,20))]]
+    layout = [[sg.TabGroup([[ sg.Tab("Reports", [[sg.Listbox(list_of_reports,font=(10,10), size=(40, 3), key="list of reports")],
+              [sg.Text(size=(5,5))],
+              [sg.Button("Submit report", size=(6,4)),sg.Button("Exit", size=(6,4))]] ),
+                   sg.Tab("Queries",[[sg.Text("vehicles by company",size=(40,1)),sg.InputText(key="VEHICLE COMPANY")],
+                                    [sg.Text("vehicles of a certain color",size=(40,1)),sg.InputText(key="VEHICLE COLOR")],
+                                    [sg.Text("vehicles of a certain type",size=(40,1)),sg.InputText(key="VEHICLE TYPE")],
+                                    [sg.Text("slot of vehicle by plate num",size=(40,1)),sg.InputText(key="VEHICLE NUM")],
+                                    [sg.Text("vehicles parked during a period of time",size=(40,1)),sg.InputText(key="VEHICLE TIME")],
+                                    [sg.Text("income during a certain period of time",size=(40,1)),sg.InputText(key="INCOME TIME")],
+                                    [sg.Button("Submit queries", size=(6,4)),sg.Button("Exit", size=(6,4))]
+                                     ])     ]]) ]]
+   
               
 
     return sg.Window(
-        title="Parking system", layout=layout, size=(400, 250), finalize=True
+        title="Parking system", layout=layout, size=(700, 270), finalize=True
     )  # return window
 
 
@@ -40,7 +49,6 @@ def log_in_window() -> sg.Window:
         [sg.Text("")],
         [sg.Button("log-in", size=(6, 2)), sg.Cancel(size=(6, 2))],
     ]
-
     return sg.Window(
         title="Parking system", layout=layout, size=(600, 250), finalize=True
     )  # return window
@@ -180,26 +188,6 @@ def main_window():
 
     return sg.Window("My new window", layout, finalize=True)
 
-    
-def initialize_parking_lot(number_bikes: str, number_cars: str,number_buses: str)-> parkingLot.AutomatedParkingLot:
-    """
-    initialize object of parking lot
-
-    Args:
-        number_bikes (int): number of bikes slot
-        number_cars (int): number of cars slot
-        number_buses (int): number of buses slot
-
-    Returns:
-        parkingLot.AutomatedParkingLot: object of AutomatedParkingLot
-    """
-    lg.logger.debug("initialize object of parking lot")
-    lg.logger.debug("main window is opened")
-    parking_lot_obj = parkingLot.AutomatedParkingLot(number_bikes,number_cars,number_buses) 
-    parking_lot_obj.allocate_n_slots()
-    return parking_lot_obj
-   
-
 def window_add_car() -> sg.Window:
     """
     enter the car details
@@ -318,6 +306,13 @@ def validate_status_of_windows(windows_list: sg.Window) -> bool:
 
 
 def add_window(window_list: list[sg.Window], number_window: int, function) -> None:
+    """
+    add new window
+    Args:
+        window_list (list[sg.Window]): window
+        number_window (int): type of window
+        function (_type_): create window 
+    """
     if number_window == 3:
         lg.logger.debug("\"ADD CAR\" window's opened")
     elif number_window == 4:
@@ -329,6 +324,11 @@ def add_window(window_list: list[sg.Window], number_window: int, function) -> No
 
 
 def create_widows_list() -> list[sg.Window,None]:
+    """
+    create all the windows by assignment them to None except the first window
+    Returns:
+        list[sg.Window,None]: list of windows
+    """
     lg.logger.debug("create all the windows by assignment them to None except the first window")
     log_window,init_window,control_window, add_car_window, remove_car_window, report_window = log_in_window(), None ,None, None ,None ,None
     return [log_window,init_window,control_window, add_car_window, remove_car_window,report_window]

@@ -186,3 +186,297 @@ date of entrance is: 2023-02-08 16:29:09.434540
 2023-02-08 16:44:43,116>>>>DEBUG>>>>"REPORT" window's opened
 2023-02-08 16:49:35,602>>>>DEBUG>>>>window: MAIN is closed and mark as None
 2023-02-08 16:49:35,603>>>>DEBUG>>>>exit parking lot program
+2023-02-08 19:05:38,312>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 19:05:44,577>>>>DEBUG>>>>open capacity window
+2023-02-08 19:05:45,659>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 19:05:45,659>>>>DEBUG>>>>main window is opened
+2023-02-08 19:05:47,591>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 19:05:55,185>>>>DEBUG>>>>window: REPORTS is closed an mark as None
+2023-02-08 19:05:56,383>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 19:05:56,383>>>>DEBUG>>>>exit parking lot program
+2023-02-08 19:06:21,898>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 19:06:27,674>>>>DEBUG>>>>open capacity window
+2023-02-08 19:06:30,186>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 19:06:30,187>>>>DEBUG>>>>main window is opened
+2023-02-08 19:06:33,574>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 19:06:56,365>>>>DEBUG>>>>window: REPORTS is closed an mark as None
+2023-02-08 19:06:57,931>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 19:06:57,931>>>>DEBUG>>>>exit parking lot program
+2023-02-08 19:12:18,315>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 19:12:31,456>>>>DEBUG>>>>open capacity window
+2023-02-08 19:12:32,928>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 19:12:32,928>>>>DEBUG>>>>main window is opened
+2023-02-08 19:12:34,912>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 19:14:21,235>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 19:14:27,372>>>>DEBUG>>>>open capacity window
+2023-02-08 19:14:29,297>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 19:14:29,298>>>>DEBUG>>>>main window is opened
+2023-02-08 19:14:31,438>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 19:14:40,331>>>>DEBUG>>>>window: REPORTS is closed an mark as None
+2023-02-08 19:14:41,369>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 19:14:41,369>>>>DEBUG>>>>exit parking lot program
+2023-02-08 19:15:31,221>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 19:15:37,463>>>>DEBUG>>>>open capacity window
+2023-02-08 19:15:39,556>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 19:15:39,556>>>>DEBUG>>>>main window is opened
+2023-02-08 19:15:41,401>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 19:15:54,761>>>>DEBUG>>>>window: REPORTS is closed an mark as None
+2023-02-08 19:15:56,092>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 19:15:56,092>>>>DEBUG>>>>exit parking lot program
+2023-02-08 19:16:24,680>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 19:16:31,938>>>>DEBUG>>>>open capacity window
+2023-02-08 19:16:33,522>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 19:16:33,523>>>>DEBUG>>>>main window is opened
+2023-02-08 19:16:35,404>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 19:16:40,440>>>>DEBUG>>>>window: REPORTS is closed an mark as None
+2023-02-08 19:16:41,542>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 19:16:41,542>>>>DEBUG>>>>exit parking lot program
+2023-02-08 19:17:09,144>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 19:17:14,660>>>>DEBUG>>>>open capacity window
+2023-02-08 19:17:16,227>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 19:17:16,228>>>>DEBUG>>>>main window is opened
+2023-02-08 19:17:17,853>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 19:17:25,821>>>>DEBUG>>>>window: REPORTS is closed an mark as None
+2023-02-08 19:17:26,988>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 19:17:26,989>>>>DEBUG>>>>exit parking lot program
+2023-02-08 19:18:47,110>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 19:18:53,705>>>>DEBUG>>>>open capacity window
+2023-02-08 19:18:55,149>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 19:18:55,149>>>>DEBUG>>>>main window is opened
+2023-02-08 19:18:56,960>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 19:19:15,951>>>>DEBUG>>>>window: REPORTS is closed an mark as None
+2023-02-08 19:19:16,985>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 19:19:16,985>>>>DEBUG>>>>exit parking lot program
+2023-02-08 19:19:47,772>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 19:19:53,793>>>>DEBUG>>>>open capacity window
+2023-02-08 19:19:56,014>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 19:19:56,015>>>>DEBUG>>>>main window is opened
+2023-02-08 19:19:58,523>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 19:20:15,860>>>>DEBUG>>>>window: REPORTS is closed an mark as None
+2023-02-08 19:20:16,788>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 19:20:16,789>>>>DEBUG>>>>exit parking lot program
+2023-02-08 19:20:47,812>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 19:20:54,605>>>>DEBUG>>>>open capacity window
+2023-02-08 19:20:56,038>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 19:20:56,038>>>>DEBUG>>>>main window is opened
+2023-02-08 19:20:57,775>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 19:21:11,133>>>>DEBUG>>>>window: REPORTS is closed an mark as None
+2023-02-08 19:21:13,085>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 19:21:13,085>>>>DEBUG>>>>exit parking lot program
+2023-02-08 19:21:39,591>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 19:21:45,631>>>>DEBUG>>>>open capacity window
+2023-02-08 19:21:46,553>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 19:21:46,554>>>>DEBUG>>>>main window is opened
+2023-02-08 19:21:48,142>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 19:21:56,174>>>>DEBUG>>>>window: REPORTS is closed an mark as None
+2023-02-08 19:21:57,461>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 19:21:57,461>>>>DEBUG>>>>exit parking lot program
+2023-02-08 19:22:30,872>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 19:22:36,488>>>>DEBUG>>>>open capacity window
+2023-02-08 19:22:37,645>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 19:22:37,645>>>>DEBUG>>>>main window is opened
+2023-02-08 19:22:39,197>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 19:22:51,892>>>>DEBUG>>>>window: REPORTS is closed an mark as None
+2023-02-08 19:22:53,113>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 19:22:53,114>>>>DEBUG>>>>exit parking lot program
+2023-02-08 19:23:29,871>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 19:23:35,161>>>>DEBUG>>>>open capacity window
+2023-02-08 19:23:36,652>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 19:23:36,652>>>>DEBUG>>>>main window is opened
+2023-02-08 19:23:38,041>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 19:23:46,173>>>>DEBUG>>>>window: REPORTS is closed an mark as None
+2023-02-08 19:23:47,482>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 19:23:47,482>>>>DEBUG>>>>exit parking lot program
+2023-02-08 19:24:19,173>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 19:24:24,967>>>>DEBUG>>>>open capacity window
+2023-02-08 19:24:26,075>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 19:24:26,075>>>>DEBUG>>>>main window is opened
+2023-02-08 19:24:27,865>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 19:24:34,771>>>>DEBUG>>>>window: REPORTS is closed an mark as None
+2023-02-08 19:24:35,934>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 19:24:35,935>>>>DEBUG>>>>exit parking lot program
+2023-02-08 19:25:24,631>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 19:25:30,177>>>>DEBUG>>>>open capacity window
+2023-02-08 19:25:31,648>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 19:25:31,648>>>>DEBUG>>>>main window is opened
+2023-02-08 19:25:33,450>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 19:25:54,525>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 19:26:31,916>>>>DEBUG>>>>window: REPORTS is closed an mark as None
+2023-02-08 19:26:31,917>>>>DEBUG>>>>exit parking lot program
+2023-02-08 19:26:54,200>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 19:26:59,902>>>>DEBUG>>>>open capacity window
+2023-02-08 19:27:01,584>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 19:27:01,584>>>>DEBUG>>>>main window is opened
+2023-02-08 19:27:03,092>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 19:27:17,722>>>>DEBUG>>>>window: REPORTS is closed an mark as None
+2023-02-08 19:27:19,119>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 19:27:19,119>>>>DEBUG>>>>exit parking lot program
+2023-02-08 19:28:07,364>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 19:28:13,271>>>>DEBUG>>>>open capacity window
+2023-02-08 19:28:14,253>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 19:28:14,253>>>>DEBUG>>>>main window is opened
+2023-02-08 19:28:17,581>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 19:28:32,903>>>>DEBUG>>>>window: REPORTS is closed an mark as None
+2023-02-08 19:28:33,858>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 19:28:33,858>>>>DEBUG>>>>exit parking lot program
+2023-02-08 19:30:07,882>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 19:30:14,088>>>>DEBUG>>>>open capacity window
+2023-02-08 19:30:15,579>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 19:30:15,580>>>>DEBUG>>>>main window is opened
+2023-02-08 19:30:16,938>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 19:30:23,938>>>>DEBUG>>>>window: REPORTS is closed an mark as None
+2023-02-08 19:30:25,711>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 19:30:25,711>>>>DEBUG>>>>exit parking lot program
+2023-02-08 19:30:37,411>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 19:30:43,614>>>>DEBUG>>>>open capacity window
+2023-02-08 19:30:45,208>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 19:30:45,209>>>>DEBUG>>>>main window is opened
+2023-02-08 19:30:46,641>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 19:31:01,666>>>>DEBUG>>>>window: REPORTS is closed an mark as None
+2023-02-08 19:31:03,239>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 19:31:03,239>>>>DEBUG>>>>exit parking lot program
+2023-02-08 20:10:39,476>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 20:10:45,582>>>>DEBUG>>>>open capacity window
+2023-02-08 20:10:47,254>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 20:10:47,255>>>>DEBUG>>>>main window is opened
+2023-02-08 20:10:48,733>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:11:48,077>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 20:11:48,077>>>>DEBUG>>>>exit parking lot program
+2023-02-08 20:12:33,499>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 20:12:40,114>>>>DEBUG>>>>open capacity window
+2023-02-08 20:12:41,814>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 20:12:41,814>>>>DEBUG>>>>main window is opened
+2023-02-08 20:12:47,874>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:13:09,697>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 20:13:20,973>>>>DEBUG>>>>open capacity window
+2023-02-08 20:13:22,573>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 20:13:22,573>>>>DEBUG>>>>main window is opened
+2023-02-08 20:13:24,233>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:13:36,599>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 20:13:36,599>>>>DEBUG>>>>exit parking lot program
+2023-02-08 20:14:14,831>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 20:14:20,584>>>>DEBUG>>>>open capacity window
+2023-02-08 20:14:22,062>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 20:14:22,062>>>>DEBUG>>>>main window is opened
+2023-02-08 20:14:23,693>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:14:44,223>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 20:14:44,223>>>>DEBUG>>>>exit parking lot program
+2023-02-08 20:18:57,048>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 20:19:03,230>>>>DEBUG>>>>open capacity window
+2023-02-08 20:19:04,749>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 20:19:04,749>>>>DEBUG>>>>main window is opened
+2023-02-08 20:19:06,850>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:19:15,727>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 20:19:15,727>>>>DEBUG>>>>exit parking lot program
+2023-02-08 20:19:56,584>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 20:20:02,287>>>>DEBUG>>>>open capacity window
+2023-02-08 20:20:03,839>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 20:20:03,839>>>>DEBUG>>>>main window is opened
+2023-02-08 20:20:06,104>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:20:15,501>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 20:20:15,501>>>>DEBUG>>>>exit parking lot program
+2023-02-08 20:33:12,674>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 20:33:19,297>>>>DEBUG>>>>window: LOG_IN is closed and mark as None
+2023-02-08 20:33:19,297>>>>DEBUG>>>>exit parking lot program
+2023-02-08 20:33:24,970>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 20:33:30,435>>>>DEBUG>>>>open capacity window
+2023-02-08 20:33:31,821>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 20:33:31,822>>>>DEBUG>>>>main window is opened
+2023-02-08 20:33:33,586>>>>DEBUG>>>>"ADD CAR" window's opened
+2023-02-08 20:33:54,182>>>>DEBUG>>>>Add new car the car type is: S
+name of company is: cor
+ color is: red
+ id of car is 1
+date of entrance is: 2023-02-08 20:33:54.156557
+ number of slot is: S10
+2023-02-08 20:34:02,764>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:34:18,780>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:36:07,486>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 20:36:14,236>>>>DEBUG>>>>open capacity window
+2023-02-08 20:36:15,722>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 20:36:15,723>>>>DEBUG>>>>main window is opened
+2023-02-08 20:36:19,547>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:36:28,965>>>>DEBUG>>>>window: REPORTS is closed an mark as None
+2023-02-08 20:36:29,599>>>>DEBUG>>>>"ADD CAR" window's opened
+2023-02-08 20:36:41,378>>>>DEBUG>>>>Add new car the car type is: S
+name of company is: cor
+ color is: red
+ id of car is 1
+date of entrance is: 2023-02-08 20:36:41.330822
+ number of slot is: S0
+2023-02-08 20:36:44,056>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:37:09,603>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:37:23,307>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:37:36,319>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:38:05,537>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:42:41,216>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 20:42:49,007>>>>DEBUG>>>>open capacity window
+2023-02-08 20:42:50,417>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 20:42:50,417>>>>DEBUG>>>>main window is opened
+2023-02-08 20:42:51,991>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:43:01,275>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 20:43:01,275>>>>DEBUG>>>>exit parking lot program
+2023-02-08 20:43:30,395>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 20:43:36,489>>>>DEBUG>>>>open capacity window
+2023-02-08 20:43:37,650>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 20:43:37,650>>>>DEBUG>>>>main window is opened
+2023-02-08 20:43:39,291>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:43:44,784>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:43:48,462>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 20:43:48,462>>>>DEBUG>>>>exit parking lot program
+2023-02-08 20:45:20,336>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 20:45:25,776>>>>DEBUG>>>>open capacity window
+2023-02-08 20:45:27,260>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 20:45:27,260>>>>DEBUG>>>>main window is opened
+2023-02-08 20:45:28,876>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:45:37,875>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:45:44,271>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 20:45:44,271>>>>DEBUG>>>>exit parking lot program
+2023-02-08 20:45:58,798>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 20:46:05,103>>>>DEBUG>>>>open capacity window
+2023-02-08 20:46:06,808>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 20:46:06,808>>>>DEBUG>>>>main window is opened
+2023-02-08 20:46:08,317>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:46:14,686>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:46:20,017>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:46:29,118>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:46:40,596>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 20:46:40,596>>>>DEBUG>>>>exit parking lot program
+2023-02-08 20:50:19,210>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 20:50:24,799>>>>DEBUG>>>>open capacity window
+2023-02-08 20:50:26,386>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 20:50:26,386>>>>DEBUG>>>>main window is opened
+2023-02-08 20:50:28,567>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:50:35,823>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 20:50:49,210>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 20:50:49,210>>>>DEBUG>>>>exit parking lot program
+2023-02-08 21:24:26,495>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 21:24:32,318>>>>DEBUG>>>>open capacity window
+2023-02-08 21:26:23,873>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 21:26:23,873>>>>DEBUG>>>>main window is opened
+2023-02-08 21:26:23,874>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 21:26:30,538>>>>DEBUG>>>>open capacity window
+2023-02-08 21:26:34,292>>>>DEBUG>>>>"ADD CAR" window's opened
+2023-02-08 21:26:45,203>>>>DEBUG>>>>Add new car the car type is: S
+name of company is: xc
+ color is: red
+ id of car is 1
+date of entrance is: 2023-02-08 21:26:45.156722
+ number of slot is: S10
+2023-02-08 21:26:48,956>>>>DEBUG>>>>"REMOVE CAR" window's opened
+2023-02-08 21:26:57,975>>>>DEBUG>>>>REMOVE_CAR window is closed
+2023-02-08 21:26:57,998>>>>INFO>>>>you pay is20 
+2023-02-08 21:27:01,161>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 21:27:16,496>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 21:27:33,768>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 21:27:33,768>>>>DEBUG>>>>exit parking lot program
+2023-02-08 21:39:50,023>>>>DEBUG>>>>initialize object of parking lot
+2023-02-08 21:39:50,023>>>>DEBUG>>>>main window is opened
+2023-02-08 21:39:50,023>>>>DEBUG>>>>create all the windows by assignment them to None except the first window
+2023-02-08 21:39:56,348>>>>DEBUG>>>>open capacity window
+2023-02-08 21:39:59,252>>>>DEBUG>>>>"ADD CAR" window's opened
+2023-02-08 21:40:02,037>>>>WARNING>>>>Enter valid color
+2023-02-08 21:40:02,903>>>>DEBUG>>>>window: ADD_CAR is closed and mark as None
+2023-02-08 21:40:03,540>>>>DEBUG>>>>"REPORT" window's opened
+2023-02-08 21:40:08,281>>>>DEBUG>>>>window: MAIN is closed and mark as None
+2023-02-08 21:40:08,282>>>>DEBUG>>>>exit parking lot program

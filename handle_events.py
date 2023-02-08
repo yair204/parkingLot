@@ -57,20 +57,71 @@ def switch_window_by_closing_it(
     windows_list[number_window + 1] = function()
 
 def change_to_initializ_window(window: sg.Window, windows_list: list[sg.Window], event: object, values: object) -> bool:
+    """
+    switch to init window
+    Args:
+        window (sg.Window): gui window
+        windows_list (list[sg.Window]): gui window
+        event (object): event of sg.Window
+        values (object): values of sg.Window
+
+    Returns:
+        bool: _description_
+    """
     if window == windows_list[0] and is_valid_input(event, values):
 
         switch_window_by_closing_it(window, windows_list,es.Windows.LOG_IN.value,wd.initialization_window)
 
 def  is_change_to_main_window(window: sg.Window, windows_list: list[sg.Window], event: object) -> None:
+    """
+    check if to open maun window
+
+    Args:
+        window (sg.Window): _description_
+        windows_list (list[sg.Window]): _description_
+        event (object): _description_
+
+    Returns:
+        bool: true/false
+    """
     return window == windows_list[1] and event == "start"
 
 def is_open_window_add_car( windows_list: list[sg.Window], event: object) -> bool:
+    """
+    check if to open window add car
+
+    Args:
+        windows_list (list[sg.Window]): gui window
+        event (object): event of sg.Window
+
+    Returns:
+        bool: true/false
+    """
     return event == "Add car" and not windows_list[3]
 
 def is_open_window_remove_car( windows_list: list[sg.Window], event: object) -> bool:
+    """
+    check if to open window remove car
+
+    Args:
+        windows_list (list[sg.Window]): gui window
+        event (object): event of sg.Window
+
+    Returns:
+        bool: true/false
+    """
     return event == "Remove car" and not windows_list[4]
 
 def validate_input_car_details(values: sg) -> bool:
+    """
+    validate input car details
+
+    Args:
+        values (sg): value
+
+    Returns:
+        bool:bool
+    """
     if values['COLOR'] not in["red","green", "yellow","purple","cyan","pink","blue","orange"]:
         sg.popup("Enter valid color" ,title="Error input",font=(20,20))
         lg.logger.warning("Enter valid color")
@@ -107,6 +158,15 @@ def validate_input_car_details(values: sg) -> bool:
     return True
 
 def added_new_car(window: sg.Window,instants_of_parking_lot:parkingLot.AutomatedParkingLot, values:object,windows_list) -> None:
+    """
+    add new car if the parking lot is not full
+
+    Args:
+        window (sg.Window): window
+        instants_of_parking_lot (parkingLot.AutomatedParkingLot): parking lot instant
+        values (object): value
+        windows_list (sg.window): windows
+    """
     if current_slot := instants_of_parking_lot.park_vehicle(
         values['COMPANY'],
         int(values['ID']),
@@ -117,6 +177,7 @@ def added_new_car(window: sg.Window,instants_of_parking_lot:parkingLot.Automated
         windows_list[es.Windows.MAIN.value][current_slot].update(background_color = values['COLOR'])
         window.close()
         windows_list[es.Windows.ADD_CAR.value] = None
+
         slot_id,type,plate_number,company,color,date=instants_of_parking_lot.tickets_list[-1].return_ticket()
         lg.logger.debug(f"Add new car the car type is: {type}\nname of company is: {company}\n color is: {color}\n id of car is {plate_number}\ndate of entrance is: {date}\n number of slot is: {slot_id}")
         sg.popup(f"Car type is: {type}\nname of company is: {company}\n color is: {color}\n id of car is {plate_number}\ndate of entrance is: {date}\n number of slot is: {slot_id}",font=(20,20))
@@ -127,6 +188,14 @@ def added_new_car(window: sg.Window,instants_of_parking_lot:parkingLot.Automated
         sg.popup("the parking lot is full")
 
 def remove_car(window: sg.Window,instants_of_parking_lot:parkingLot.AutomatedParkingLot, values:object,windows_list) -> None:
+    """
+    remove car and validate that the id is correct
+    Args:
+        window (sg.Window): window
+        instants_of_parking_lot (parkingLot.AutomatedParkingLot): instants_of_parking_lot
+        values (object): _value
+        windows_list (_type_): window
+    """
     try:
         int(values['ID_REMOVE'])
     except Exception:
@@ -145,30 +214,79 @@ def remove_car(window: sg.Window,instants_of_parking_lot:parkingLot.AutomatedPar
     else:
         sg.popup("the car wasn't found",font=(10,10),title="Error")
 
-def handle_reports(values,instants_of_parking_lot):
-    if values['list of reports']:
-       
+def handle_reports(values:sg ,instants_of_parking_lot,event:object) -> None:
+    """
+    reports the the report event
+    Args:
+        values (sg: value
+        instants_of_parking_lot (_type_):instants_of_parking_lot
+        event (sg): event
+    """
+    if event == "Submit report" :
         report = values['list of reports']
         match report:
             case ['current capacity']:
                 sg.popup( reports.track_of_capacity(instants_of_parking_lot))
-            case ['vehicles by company']:
-                pass
-            case  ['vehicles of a certain color']:
-                pass
-            case ['vehicles of a certain type']:
-                pass
-            case ['slot of vehicle by plate no']:
-                pass
-            case ['vehicles parked during a period of time']:
-                pass
-            case ['income during a certain period of time']:
-                pass
+
             case ['number of entries per each entry points']:
                 report =reports.ReportEntries()
-                sg.popup(f'{report.gateA}')
+                sg.popup(f'gate A:{report.gateA}\ngate B:{report.gateB}\ngate C:{report.gateC}',title=("Report"),font=(10,10))
             case ['vehicles that parked more than 24 hours']:
-                pass
+                sg.popup(reports.parked_more_24_hours(instants_of_parking_lot),title=("Report"),font=(10,10))
+                
+    def queries(event:sg,values:sg) -> None:
+        """
+        reports the the report queries
+        Args:
+            event (sg): event
+            values (sg): value 
+        """
+        if event == "Submit queries" :
+            
+            if values['VEHICLE COLOR']:
+                sg.popup(reports.specific_color(instants_of_parking_lot,values['VEHICLE COLOR']),title="Report",font=(10,10))
+        
+            elif  values['VEHICLE COMPANY']:
+                sg.popup(reports.specific_company(instants_of_parking_lot ,values['VEHICLE COMPANY']),title="report",font=(10,10))    
+            elif  values['VEHICLE TYPE']:
+                sg.popup(reports.specific_type(instants_of_parking_lot,values['VEHICLE TYPE']),title="Report",font=(10,10))
+            
+            elif  values['VEHICLE NUM']:
+                sg.popup(reports.specific_slot_ID(instants_of_parking_lot,values['VEHICLE NUM']),title="Report",font=(10,10))
+            
+            elif  values['VEHICLE TIME']:
+                sg.popup("TODO",title="Error",font=(10,10))
+                
+            elif values['INCOME TIME']:
+                sg.popup("TODO",title="Error",font=(10,10))
+    queries(event,values)
+
+def check_events(window:sg.Window,values:sg, event:sg, instants_of_parking_lot:object,windows_list:list[sg.Window]) -> None:
+    """
+    run events of add cer remove car reports
+
+    Args:
+        window (sg.Window): window
+        values (sg): value
+        event (sg): events
+        instants_of_parking_lot (object): instants_of_parking_lot
+        windows_list (list[sg.Window]):  windows_list
+    """
+    if event == "Submit_Car" and validate_input_car_details(values):
+            added_new_car(window,instants_of_parking_lot, values,windows_list) 
+
+    if event == "Submit_exit_car":
+        remove_car(window,instants_of_parking_lot, values,windows_list)
+
+    if event == "Reports" and not windows_list[es.Windows.REPORTS.value]:
+        wd.add_window(windows_list,es.Windows.REPORTS.value,wd.reports_window)
+
+    if event in ["Submit report", "Submit queries"]:
+        handle_reports(values,instants_of_parking_lot ,event)
+        window.close()
+        windows_list[es.Windows.REPORTS.value] = None
+
+    
             
 
                 
