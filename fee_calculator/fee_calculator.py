@@ -4,19 +4,18 @@ import math
 
 
 class Ticket:
-    def __init__(self, time, date, type_vic) -> None:
-        self.time = time
-        self.date = date
+    def __init__(self,type_vic, ) -> None:
+        self.time_ = datetime.now()
         self.type_vic = type_vic
-
+        self.if_up_day = False
     def get_time(self):
-        return self.time
+        return self.time_.time()
 
     def get_date(self):
-        return self.date
+        return self.time_.date()
 
-
-a = Ticket("08:51", "20230204", "M")
+time_ = datetime.now()
+a = Ticket(time_, "M")
 
 
 def calculate_time(Ticket: object) -> int:
@@ -49,6 +48,7 @@ def calculate_price(Ticket: object, price_of_days=480) -> int:
     total = 0
     exceeding_rate = 0
     if hours > 24:  # Extra charge over 24 hours
+        Ticket.if_up_day = True
         days, hours = divmod(hours, 24)
         total = days * price_of_days + 100 * days
     if hours > 3:  # Extra charge over 3 hours
