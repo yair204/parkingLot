@@ -1,4 +1,5 @@
 import parkingLot
+
 def initialize_parking_slot( number_bikes: int, number_cars: int,number_buses: int) -> parkingLot.AutomatedParkingLot:
     """
     initialize object of parking slot

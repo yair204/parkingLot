@@ -1,6 +1,10 @@
 import PySimpleGUI as sg
+import parkingLot
+import parkingLot
+import handle_events as events
+import logger_parking_lot as lg
+import enums as enm 
 
-# import parkingLot
 def reports_window() -> sg.Window:
    
     list_of_reports = [
@@ -10,7 +14,7 @@ def reports_window() -> sg.Window:
         "vehicles of a certain type",
         "slot of vehicle by plate no",
         "vehicles parked during a period of time",
-        "income during a certain period of time ",
+        "income during a certain period of time",
         "number of entries per each entry points",
         "vehicles that parked more than 24 hours"
     ]
@@ -76,7 +80,6 @@ def initialization_window() -> sg.Window:
         title="Parking system", layout=layout, size=(650, 250), finalize=True
     )  # return window
 
-
 def main_window():
     """
     control main window
@@ -84,6 +87,7 @@ def main_window():
     Returns:
         sg.Window: gui window
     """
+    
     sg.theme("BlueMono")
     colum1 = sg.Column(
         [
@@ -177,6 +181,24 @@ def main_window():
     return sg.Window("My new window", layout, finalize=True)
 
     
+def initialize_parking_lot(number_bikes: str, number_cars: str,number_buses: str)-> parkingLot.AutomatedParkingLot:
+    """
+    initialize object of parking lot
+
+    Args:
+        number_bikes (int): number of bikes slot
+        number_cars (int): number of cars slot
+        number_buses (int): number of buses slot
+
+    Returns:
+        parkingLot.AutomatedParkingLot: object of AutomatedParkingLot
+    """
+    lg.logger.debug("initialize object of parking lot")
+    lg.logger.debug("main window is opened")
+    parking_lot_obj = parkingLot.AutomatedParkingLot(number_bikes,number_cars,number_buses) 
+    parking_lot_obj.allocate_n_slots()
+    return parking_lot_obj
+   
 
 def window_add_car() -> sg.Window:
     """
@@ -234,7 +256,7 @@ def is_valid_input(event: object, values: dict) -> bool:
             sg.popup("Fill all the fields", title="ERROR", font=10)
 
 
-def mark_windows_as_None(window: sg.Window, windows_list) -> None:
+def mark_windows_as_None(window: sg.Window, windows_list: list[sg.Window]) -> None:
     """
     check what window have been closed and mark the window as None
 
@@ -242,18 +264,32 @@ def mark_windows_as_None(window: sg.Window, windows_list) -> None:
         window (sg.Window): gui window
         windows_list (sg.Window): list of all the windows
     """
-    if window == windows_list[0]:
-        windows_list[0] = None
-    elif window == windows_list[1]:
-        windows_list[1] = None
-    elif window == windows_list[2]:
-        windows_list[2] = None
-    elif window == windows_list[3]:
-        windows_list[3] = None
-    elif window == windows_list[4]:
-        windows_list[4] = None
-    elif window == windows_list[5]:
-        windows_list[5] = None
+
+  
+    if window == windows_list[enm.Windows.LOG_IN.value]:
+        windows_list[enm.Windows.LOG_IN.value] = None
+        lg.logger.debug(f'window: {enm.Windows.LOG_IN.name} is closed and mark as None')
+
+    elif window == windows_list[enm.Windows.CAPACITY.value]:
+        windows_list[enm.Windows.CAPACITY.value] = None
+        lg.logger.debug(f'window: {enm.Windows.CAPACITY.name} is closed and mark as None')
+
+    elif window == windows_list[enm.Windows.MAIN.value]:
+        windows_list[enm.Windows.MAIN.value] = None
+        lg.logger.debug(f'window: {enm.Windows.MAIN.name} is closed and mark as None')
+
+    elif window == windows_list[enm.Windows.ADD_CAR.value]:
+        windows_list[enm.Windows.ADD_CAR.value] = None
+        lg.logger.debug(f'window: {enm.Windows.ADD_CAR.name} is closed and mark as None')
+
+    elif window == windows_list[enm.Windows.REMOVE_CAR.value]:
+        windows_list[enm.Windows.REMOVE_CAR.value] = None
+        lg.logger.debug(f'window: {enm.Windows.REMOVE_CAR.name} is closed and mark as None')
+
+    elif window == windows_list[enm.Windows.REPORTS.value]:
+        windows_list[enm.Windows.REPORTS.value] = None
+        lg.logger.debug(f'window: {enm.Windows.REPORTS.name} is closed an mark as None')
+
 
 
 def validate_status_of_windows(windows_list: sg.Window) -> bool:
@@ -282,10 +318,18 @@ def validate_status_of_windows(windows_list: sg.Window) -> bool:
 
 
 def add_window(window_list: list[sg.Window], number_window: int, function) -> None:
+    if number_window == 3:
+        lg.logger.debug("\"ADD CAR\" window's opened")
+    elif number_window == 4:
+        lg.logger.debug("\"REMOVE CAR\" window's opened")
+    elif number_window == 5:
+        lg.logger.debug("\"REPORT\" window's opened")
+
     window_list[number_window] = function()
 
 
 def create_widows_list() -> list[sg.Window,None]:
+    lg.logger.debug("create all the windows by assignment them to None except the first window")
     log_window,init_window,control_window, add_car_window, remove_car_window, report_window = log_in_window(), None ,None, None ,None ,None
     return [log_window,init_window,control_window, add_car_window, remove_car_window,report_window]
     

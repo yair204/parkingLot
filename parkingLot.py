@@ -79,6 +79,8 @@ class AutomatedParkingLot:
 
                 self.tickets_list.remove(ticket)
                 return fee_calculator.calculate_price(ticket) ,ticket.slot_ID
+            
+        return None ,None
                
                 
    
@@ -91,7 +93,7 @@ class AutomatedParkingLot:
                     i.is_empty = False
                     return i.ID
             print("Sorry!\nThe parking lot is full!")
-            return -1
+            return None
             
         
         if gate == self.gate_B:
@@ -104,7 +106,7 @@ class AutomatedParkingLot:
                     return slots_list[len(slots_list)//2+i].ID
                 
             print("Sorry!\nThe parking lot is full!")
-            return -1
+            return None
         
         
         if gate == self.gate_C:       
@@ -113,7 +115,7 @@ class AutomatedParkingLot:
                     i.is_empty = False
                     return i.ID
             print("Sorry!\nThe parking lot is full!")
-            raise -1
+            return None
         
        
     def add_gate(self, new_gate:str):
