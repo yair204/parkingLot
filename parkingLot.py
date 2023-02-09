@@ -96,35 +96,41 @@ class AutomatedParkingLot:
             current_slot = self.allocate_nearly_slot(gate,self.slots_LP_list)
             self.tickets_list.append(ticket.Ticket(current_slot,vehicle.Bus(company, plate_num, color, car_type)))
             return current_slot 
-                  
+    
     def remove_vehicle(self,plate_num:int):
         
         for ticket in self.tickets_list:
             if plate_num == ticket.get_plate_num():
                 
-                if ticket.type_vehicle == "S":
-                    for s in self.slots_SP_list:
-                        if s.ID == ticket.slot_ID:
-                            s.is_empty = True
-                            
-                elif ticket.type_vehicle == "M":
+                if ticket.type_vehicle == "M":
                     for m in self.slots_MP_list:
                         if m.ID == ticket.slot_ID:
                             m.is_empty = True 
+
+                elif ticket.type_vehicle == "S":
+                    for s in self.slots_SP_list:
+                        if s.ID == ticket.slot_ID:
+                            s.is_empty = True
 
                 else:
                     for l in self.slots_LP_list:
                         if l.ID == ticket.slot_ID:
                             l.is_empty = True
-                
+                for item in self.left_tickets_list:
+                    if (
+                        plate_num == item.get_plate_num()
+                        and fee_calculator.calculate_time(item) < 2
+                    ):
+                        self.tickets_list.remove(ticket) # remove the ticket from the list
+                        return payment,ticket.slot_ID # return the payment and slot id
                 payment = fee_calculator.calculate_price(ticket) # Calculate the final price
                 ticket.set_payment(payment) # send the payment to ticket class
                 self.left_tickets_list.append(ticket) # add the ticket to list of tickets that left
                 self.tickets_list.remove(ticket) # remove the ticket from the list
                 return payment,ticket.slot_ID # return the payment and slot id
-            
-        return None , None #If the plate number not exist      
-            
+
+        return None , None #If the plate number not exist             
+    
     def allocate_nearly_slot(self,gate:str,slots_list:list):
         
         if gate == self.gate_A: # Gate A search the nearest slot by loop the list in ascending order  
