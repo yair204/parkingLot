@@ -32,6 +32,7 @@ def is_valid_input(event: object, values: dict) -> bool:
             lg.logger.warning("You must specify a valid username and password")
             sg.popup("Fill all the fields", title="ERROR", font=10)
 
+
 def mark_window_as_None(windows_list: list[sg.Window], number_window: int) -> None:
     """
     initialize window to None
@@ -40,6 +41,7 @@ def mark_window_as_None(windows_list: list[sg.Window], number_window: int) -> No
         number_window (int): indicate what window to mark
     """
     windows_list[number_window] = None
+
 
 def switch_window_by_closing_it(
     window: sg.Window, windows_list: list[sg.Window], number_window: int, function
@@ -56,7 +58,10 @@ def switch_window_by_closing_it(
     mark_window_as_None(windows_list, number_window)
     windows_list[number_window + 1] = function()
 
-def change_to_initializ_window(window: sg.Window, windows_list: list[sg.Window], event: object, values: object) -> bool:
+
+def change_to_initializ_window(
+    window: sg.Window, windows_list: list[sg.Window], event: object, values: object
+) -> bool:
     """
     switch to init window
     Args:
@@ -70,9 +75,14 @@ def change_to_initializ_window(window: sg.Window, windows_list: list[sg.Window],
     """
     if window == windows_list[0] and is_valid_input(event, values):
 
-        switch_window_by_closing_it(window, windows_list,es.Windows.LOG_IN.value,wd.initialization_window)
+        switch_window_by_closing_it(
+            window, windows_list, es.Windows.LOG_IN.value, wd.initialization_window
+        )
 
-def  is_change_to_main_window(window: sg.Window, windows_list: list[sg.Window], event: object) -> None:
+
+def is_change_to_main_window(
+    window: sg.Window, windows_list: list[sg.Window], event: object
+) -> None:
     """
     check if to open maun window
 
@@ -86,7 +96,8 @@ def  is_change_to_main_window(window: sg.Window, windows_list: list[sg.Window], 
     """
     return window == windows_list[1] and event == "start"
 
-def is_open_window_add_car( windows_list: list[sg.Window], event: object) -> bool:
+
+def is_open_window_add_car(windows_list: list[sg.Window], event: object) -> bool:
     """
     check if to open window add car
 
@@ -99,7 +110,8 @@ def is_open_window_add_car( windows_list: list[sg.Window], event: object) -> boo
     """
     return event == "Add car" and not windows_list[3]
 
-def is_open_window_remove_car( windows_list: list[sg.Window], event: object) -> bool:
+
+def is_open_window_remove_car(windows_list: list[sg.Window], event: object) -> bool:
     """
     check if to open window remove car
 
@@ -112,6 +124,7 @@ def is_open_window_remove_car( windows_list: list[sg.Window], event: object) -> 
     """
     return event == "Remove car" and not windows_list[4]
 
+
 def validate_input_car_details(values: sg) -> bool:
     """
     validate input car details
@@ -122,42 +135,57 @@ def validate_input_car_details(values: sg) -> bool:
     Returns:
         bool:bool
     """
-    if values['COLOR'] not in["red","green", "yellow","purple","cyan","pink","blue","orange"]:
-        sg.popup("Enter valid color" ,title="Error input",font=(20,20))
+    if values["COLOR"] not in [
+        "red",
+        "green",
+        "yellow",
+        "purple",
+        "cyan",
+        "pink",
+        "blue",
+        "orange",
+    ]:
+        sg.popup("Enter valid color", title="Error input", font=(20, 20))
         lg.logger.warning("Enter valid color")
         return False
 
-    if not values['COMPANY']:
-        sg.popup("Enter company name" ,title="Error input",font=(20,20))
+    if not values["COMPANY"]:
+        sg.popup("Enter company name", title="Error input", font=(20, 20))
         lg.logger.warning("Enter company name")
         return False
 
-    if not values['ID']:
-        sg.popup("Enter plate number" ,title="Error input",font=(20,20))
+    if not values["ID"]:
+        sg.popup("Enter plate number", title="Error input", font=(20, 20))
         lg.logger.warning("Enter plate number")
         return False
     else:
         try:
-            int(values['ID'])
+            int(values["ID"])
 
         except Exception:
-            sg.popup("Enter plate number integer" ,title="Error input",font=(20,20))
+            sg.popup("Enter plate number integer", title="Error input", font=(20, 20))
             lg.logger.error("Enter plate number integer")
             return False
 
-    if values['TYPE'] not in ["S", "L", "M"]:
-        sg.popup("Enter types of S, L, M  " ,title="Error input",font=(20,20))
+    if values["TYPE"] not in ["S", "L", "M"]:
+        sg.popup("Enter types of S, L, M  ", title="Error input", font=(20, 20))
         lg.logger.warning("Enter types of S, L, M ")
         return False
-    
-    if not values['GATE']:
-        sg.popup("Choose gate" ,title="Error input",font=(20,20))
+
+    if not values["GATE"]:
+        sg.popup("Choose gate", title="Error input", font=(20, 20))
         lg.logger.warning("Choose gate")
         return False
-    
+
     return True
 
-def added_new_car(window: sg.Window,instants_of_parking_lot:parkingLot.AutomatedParkingLot, values:object,windows_list) -> None:
+
+def added_new_car(
+    window: sg.Window,
+    instants_of_parking_lot: parkingLot.AutomatedParkingLot,
+    values: object,
+    windows_list,
+) -> None:
     """
     add new car if the parking lot is not full
 
@@ -168,26 +196,47 @@ def added_new_car(window: sg.Window,instants_of_parking_lot:parkingLot.Automated
         windows_list (sg.window): windows
     """
     if current_slot := instants_of_parking_lot.park_vehicle(
-        values['COMPANY'],
-        int(values['ID']),
-        values['COLOR'],
-        values['TYPE'],
-        values['GATE'],
+        values["COMPANY"],
+        int(values["ID"]),
+        values["COLOR"],
+        values["TYPE"],
+        values["GATE"],
     ):
-        windows_list[es.Windows.MAIN.value][current_slot].update(background_color = values['COLOR'])
+        windows_list[es.Windows.MAIN.value][current_slot].update(
+            background_color=values["COLOR"]
+        )
         window.close()
         windows_list[es.Windows.ADD_CAR.value] = None
 
-        slot_id,type,plate_number,company,color,date=instants_of_parking_lot.tickets_list[-1].return_ticket()
-        lg.logger.debug(f"Add new car the car type is: {type}\nname of company is: {company}\n color is: {color}\n id of car is {plate_number}\ndate of entrance is: {date}\n number of slot is: {slot_id}")
-        sg.popup(f"Car type is: {type}\nname of company is: {company}\n color is: {color}\n id of car is {plate_number}\ndate of entrance is: {date}\n number of slot is: {slot_id}",font=(20,20))
-        instants_entry =reports.ReportEntries()
-        instants_entry.increment_entry(values['GATE'])
+        (
+            slot_id,
+            type,
+            plate_number,
+            company,
+            color,
+            date,
+        ) = instants_of_parking_lot.tickets_list[-1].return_ticket()
+        lg.logger.debug(
+            f"Add new car the car type is: {type}\nname of company is: {company}\n color is: {color}\n id of car is {plate_number}\ndate of entrance is: {date}\n number of slot is: {slot_id}"
+        )
+        sg.popup(
+            f"Car type is: {type}\nname of company is: {company}\n color is: {color}\n id of car is {plate_number}\ndate of entrance is: {date}\n number of slot is: {slot_id}",
+            font=(20, 20),
+            title="ticket",
+        )
+        instants_entry = reports.ReportEntries()
+        instants_entry.increment_entry(values["GATE"])
     else:
         lg.logger.warning("the parking lot is full")
         sg.popup("the parking lot is full")
 
-def remove_car(window: sg.Window,instants_of_parking_lot:parkingLot.AutomatedParkingLot, values:object,windows_list) -> None:
+
+def remove_car(
+    window: sg.Window,
+    instants_of_parking_lot: parkingLot.AutomatedParkingLot,
+    values: object,
+    windows_list,
+) -> None:
     """
     remove car and validate that the id is correct
     Args:
@@ -197,24 +246,25 @@ def remove_car(window: sg.Window,instants_of_parking_lot:parkingLot.AutomatedPar
         windows_list (_type_): window
     """
     try:
-        int(values['ID_REMOVE'])
+        int(values["ID_REMOVE"])
     except Exception:
-        sg.popup("Enter plate number integer " ,title="Error input",font=(20,20))
+        sg.popup("Enter plate number integer ", title="Error input", font=(20, 20))
         lg.logger.error("Enter plate number integer")
         return
-    
-    price,slot_id = instants_of_parking_lot.remove_vehicle(int(values['ID_REMOVE']))
+
+    price, slot_id = instants_of_parking_lot.remove_vehicle(int(values["ID_REMOVE"]))
     if slot_id:
-        windows_list[es.Windows.MAIN.value][slot_id].update(background_color = "white")
+        windows_list[es.Windows.MAIN.value][slot_id].update(background_color="white")
         lg.logger.debug("REMOVE_CAR window is closed")
         window.close()
         windows_list[es.Windows.REMOVE_CAR.value] = None
         lg.logger.info(f"you pay is{price} ")
-        sg.popup(f"you pay is{price} ",font=(10,10),title="Error")
+        sg.popup(f"you pay is{price} ", font=(10, 10), title="Error")
     else:
-        sg.popup("the car wasn't found",font=(10,10),title="Error")
+        sg.popup("the car wasn't found", font=(10, 10), title="Error")
 
-def handle_reports(values:sg ,instants_of_parking_lot,event:object) -> None:
+
+def handle_reports(values: sg, instants_of_parking_lot, event: object) -> None:
     """
     reports the the report event
     Args:
@@ -222,46 +272,105 @@ def handle_reports(values:sg ,instants_of_parking_lot,event:object) -> None:
         instants_of_parking_lot (_type_):instants_of_parking_lot
         event (sg): event
     """
-    if event == "Submit report" :
-        report = values['list of reports']
+    if event == "Submit report":
+        report = values["list of reports"]
         match report:
-            case ['current capacity']:
-                sg.popup( reports.track_of_capacity(instants_of_parking_lot))
+            case ["current capacity"]:
+                sg.popup(reports.track_of_capacity(instants_of_parking_lot))
+                lg.logger.info(reports.track_of_capacity(instants_of_parking_lot))
 
-            case ['number of entries per each entry points']:
-                report =reports.ReportEntries()
-                sg.popup(f'gate A:{report.gateA}\ngate B:{report.gateB}\ngate C:{report.gateC}',title=("Report"),font=(10,10))
-            case ['vehicles that parked more than 24 hours']:
-                sg.popup(reports.parked_more_24_hours(instants_of_parking_lot),title=("Report"),font=(10,10))
+            case ["number of entries per each entry points"]:
+                report = reports.ReportEntries()
+                sg.popup(
+                    f"gate A:{report.gateA}\ngate B:{report.gateB}\ngate C:{report.gateC}",
+                    title=("Report"),
+                    font=(10, 10),
+                )
+                lg.logger.info(
+                    f"gate A:{report.gateA}\ngate B:{report.gateB}\ngate C:{report.gateC}",
+                    title=("Report"),
+                )
+            case ["vehicles that parked more than 24 hours"]:
+                sg.popup(
+                    reports.parked_more_24_hours(instants_of_parking_lot),
+                    title=("Report"),
+                    font=(10, 10),
+                )
+                lg.logger.info(reports.parked_more_24_hours(instants_of_parking_lot))
 
-    def queries(event:sg,values:sg) -> None:
+    def queries(event: sg, values: sg) -> None:
         """
         reports the the report queries
         Args:
             event (sg): event
-            values (sg): value 
+            values (sg): value
         """
-        if event == "Submit queries" :
-            
-            if values['VEHICLE COLOR']:
-                sg.popup(reports.specific_color(instants_of_parking_lot,values['VEHICLE COLOR']),title="Report",font=(10,10))
-        
-            elif  values['VEHICLE COMPANY']:
-                sg.popup(reports.specific_company(instants_of_parking_lot ,values['VEHICLE COMPANY']),title="report",font=(10,10))    
-            elif  values['VEHICLE TYPE']:
-                sg.popup(reports.specific_type(instants_of_parking_lot,values['VEHICLE TYPE']),title="Report",font=(10,10))
-            
-            elif  values['VEHICLE NUM']:
-                sg.popup(reports.specific_slot_ID(instants_of_parking_lot,values['VEHICLE NUM']),title="Report",font=(10,10))
-            
-            elif  values['VEHICLE TIME']:
-                sg.popup("TODO",title="Error",font=(10,10))
-                
-            elif values['INCOME TIME']:
-                sg.popup("TODO",title="Error",font=(10,10))
-    queries(event,values)
+        if event == "Submit queries":
 
-def check_events_car_and_reports(window:sg.Window,values:sg, event:sg, instants_of_parking_lot:object,windows_list:list[sg.Window]) -> None:
+            if values["VEHICLE COLOR"]:
+                sg.popup(
+                    reports.specific_color(
+                        instants_of_parking_lot, values["VEHICLE COLOR"]
+                    ),
+                    title="Report",
+                    font=(10, 10),
+                )
+                lg.logger.info(reports.specific_color(
+                        instants_of_parking_lot, values["VEHICLE COLOR"]
+                    ))
+
+            elif values["VEHICLE COMPANY"]:
+                sg.popup(
+                    reports.specific_company(
+                        instants_of_parking_lot, values["VEHICLE COMPANY"]
+                    ),
+                    title="report",
+                    font=(10, 10),
+                )
+                lg.logger.info(reports.specific_company(
+                        instants_of_parking_lot, values["VEHICLE COMPANY"]
+                    ))
+            elif values["VEHICLE TYPE"]:
+                sg.popup(
+                    reports.specific_type(
+                        instants_of_parking_lot, values["VEHICLE TYPE"]
+                    ),
+                    title="Report",
+                    font=(10, 10),
+                )
+                lg.logger.info(reports.specific_type(
+                        instants_of_parking_lot, values["VEHICLE TYPE"]
+                    ))
+
+            elif values["VEHICLE NUM"]:
+                sg.popup(
+                    reports.specific_slot_ID(
+                        instants_of_parking_lot, values["VEHICLE NUM"]
+                    ),
+                    title="Report",
+                    font=(10, 10),
+                )
+                lg.logger.info( reports.specific_slot_ID(
+                        instants_of_parking_lot, values["VEHICLE NUM"]
+                    ))
+
+            elif values["VEHICLE TIME"]:
+                sg.popup("TODO", title="Error", font=(10, 10))
+
+
+            elif values["INCOME TIME"]:
+                sg.popup("TODO", title="Error", font=(10, 10))
+
+    queries(event, values)
+
+
+def check_events_car_and_reports(
+    window: sg.Window,
+    values: sg,
+    event: sg,
+    instants_of_parking_lot: object,
+    windows_list: list[sg.Window],
+) -> None:
     """
     run events of add cer remove car reports
 
@@ -273,20 +382,23 @@ def check_events_car_and_reports(window:sg.Window,values:sg, event:sg, instants_
         windows_list (list[sg.Window]):  windows_list
     """
     if event == "Submit_Car" and validate_input_car_details(values):
-            added_new_car(window,instants_of_parking_lot, values,windows_list) 
+        added_new_car(window, instants_of_parking_lot, values, windows_list)
 
     if event == "Submit_exit_car":
-        remove_car(window,instants_of_parking_lot, values,windows_list)
+        remove_car(window, instants_of_parking_lot, values, windows_list)
 
     if event == "Reports" and not windows_list[es.Windows.REPORTS.value]:
-        wd.add_window(windows_list,es.Windows.REPORTS.value,wd.reports_window)
+        wd.add_window(windows_list, es.Windows.REPORTS.value, wd.reports_window)
 
     if event in ["Submit report", "Submit queries"]:
-        handle_reports(values,instants_of_parking_lot ,event)
+        handle_reports(values, instants_of_parking_lot, event)
         window.close()
         windows_list[es.Windows.REPORTS.value] = None
 
-def open_windows(window:sg.Window, windows_list:list[sg.Window],event:sg,values:sg) -> bool:
+
+def open_windows(
+    window: sg.Window, windows_list: list[sg.Window], event: sg, values: sg
+) -> bool:
     """
     handle events of windows open
 
@@ -302,13 +414,12 @@ def open_windows(window:sg.Window, windows_list:list[sg.Window],event:sg,values:
     change_to_initializ_window(window, windows_list, event, values)
 
     if event == "start":
-        switch_window_by_closing_it(window, windows_list,es.Windows.CAPACITY.value,wd.main_window)
+        switch_window_by_closing_it(
+            window, windows_list, es.Windows.CAPACITY.value, wd.main_window
+        )
 
-    if is_open_window_add_car( windows_list,event):
-        wd.add_window(windows_list, es.Windows.ADD_CAR.value,wd.window_add_car)
+    if is_open_window_add_car(windows_list, event):
+        wd.add_window(windows_list, es.Windows.ADD_CAR.value, wd.window_add_car)
 
-    if is_open_window_remove_car( windows_list,event):
-        wd.add_window(windows_list, es.Windows.REMOVE_CAR.value,wd.window_remove_car)
-            
-
-                
+    if is_open_window_remove_car(windows_list, event):
+        wd.add_window(windows_list, es.Windows.REMOVE_CAR.value, wd.window_remove_car)
