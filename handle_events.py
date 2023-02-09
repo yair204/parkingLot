@@ -233,7 +233,7 @@ def handle_reports(values:sg ,instants_of_parking_lot,event:object) -> None:
                 sg.popup(f'gate A:{report.gateA}\ngate B:{report.gateB}\ngate C:{report.gateC}',title=("Report"),font=(10,10))
             case ['vehicles that parked more than 24 hours']:
                 sg.popup(reports.parked_more_24_hours(instants_of_parking_lot),title=("Report"),font=(10,10))
-                
+
     def queries(event:sg,values:sg) -> None:
         """
         reports the the report queries
@@ -261,7 +261,7 @@ def handle_reports(values:sg ,instants_of_parking_lot,event:object) -> None:
                 sg.popup("TODO",title="Error",font=(10,10))
     queries(event,values)
 
-def check_events(window:sg.Window,values:sg, event:sg, instants_of_parking_lot:object,windows_list:list[sg.Window]) -> None:
+def check_events_car_and_reports(window:sg.Window,values:sg, event:sg, instants_of_parking_lot:object,windows_list:list[sg.Window]) -> None:
     """
     run events of add cer remove car reports
 
@@ -286,7 +286,29 @@ def check_events(window:sg.Window,values:sg, event:sg, instants_of_parking_lot:o
         window.close()
         windows_list[es.Windows.REPORTS.value] = None
 
-    
+def open_windows(window:sg.Window, windows_list:list[sg.Window],event:sg,values:sg) -> bool:
+    """
+    handle events of windows open
+
+    Args:
+        window (sg.Window): window
+        windows_list (list[sg.Window]):list[window]
+        event (sg): events
+        values (sg): value
+
+    Returns:
+        bool: true/false
+    """
+    change_to_initializ_window(window, windows_list, event, values)
+
+    if event == "start":
+        switch_window_by_closing_it(window, windows_list,es.Windows.CAPACITY.value,wd.main_window)
+
+    if is_open_window_add_car( windows_list,event):
+        wd.add_window(windows_list, es.Windows.ADD_CAR.value,wd.window_add_car)
+
+    if is_open_window_remove_car( windows_list,event):
+        wd.add_window(windows_list, es.Windows.REMOVE_CAR.value,wd.window_remove_car)
             
 
                 
