@@ -30,7 +30,7 @@ def specific_company(AutomatedParkingLot: object, company: str)->list:
     """
     slots_full =[ticket.plate_num for ticket in AutomatedParkingLot.tickets_list if ticket.compony_vehicle == company]
   
-    return [f"plate number of all the vehicles they are -{company}- : {slots_full}"]
+    return f"plate number of all the vehicles they are -{company}- : {slots_full}"
 
 def specific_color(AutomatedParkingLot: object, color: str)->list:
     """_summary_
@@ -43,7 +43,7 @@ def specific_color(AutomatedParkingLot: object, color: str)->list:
     """
     slots_full =[ticket.plate_num for ticket in AutomatedParkingLot.tickets_list if ticket.color_vehicle == color]
   
-    return [f"plate number of all the vehicles they are -{color}- : {slots_full}"]
+    return f"plate number of all the vehicles they are -{color}- : {slots_full}"
 
 def specific_type(AutomatedParkingLot: object, type: str)->list:
     """_summary_
@@ -71,7 +71,7 @@ def specific_slot_ID(AutomatedParkingLot: object, plate_num: int)->str:
     slot_ID = (ticket.slot_ID for ticket in AutomatedParkingLot.tickets_list if ticket.plate_num == plate_num)
     return f"vehicle number: {plate_num} \n parking in slot number : {slot_ID}"  
 
-def vehicle_parked_in_period_time(fileName:str) -> int:
+def vehicle_parked_in_period_time(fileName: str) -> int:
     
     csv_list = list(csv.reader(open(fileName, 'r')))
     pay = csv_list[0].index('payment')
