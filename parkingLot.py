@@ -68,20 +68,6 @@ class AutomatedParkingLot:
         if car_type == "S":  
             current_slot = self.allocate_nearly_slot(gate,self.slots_SP_list)
             self.tickets_list.append(ticket.Ticket(current_slot,vehicle.Bike(company, plate_num, color, car_type)))
-           
-    
-            headers = ["slot_ID","type_car","company","plat_number","color","date","entry time","exit time","payment"]
-            with open("data.csv", 'w', newline='') as csv_file:
-                writer = csv.writer(csv_file)
-                writer.writerow(headers)
-                writer.writerow([current_slot,car_type,company,plate_num,color,datetime.now(),time.strftime(str("%H:%M:%S:")),0,20])  
-            
-            for _ in range(5):
-                with open("data.csv", 'a+', newline='') as csv_file:
-                    writer = csv.writer(csv_file)
-                    
-                    writer.writerow([current_slot,car_type,company,plate_num,color,datetime.now(),time.strftime(str("%H:%M:%S:")),0,20])  
-                
                 
             return current_slot 
             
