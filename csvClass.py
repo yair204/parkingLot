@@ -6,7 +6,7 @@ class Csv:
          
     def set_csv_file(self):
         
-        headers = ["slot_ID","type_car","compony","plat_number","color","date","entry time","exit time"]
+        headers = ["slot_ID","type_car","company","plat_number","color","date","entry time","exit time"]
         with open(self.filename, 'w', newline='') as csv_file:
             self.writer = csv.writer(csv_file)
             self.writer.writerow(headers)

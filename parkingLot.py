@@ -64,36 +64,29 @@ class AutomatedParkingLot:
             self.slots_LP_list.append(slot_)
             
     def park_vehicle(self,company:str, plate_num:int, color:str,car_type:str,gate:str):
-        
-        if car_type == "S":  
-            current_slot = self.allocate_nearly_slot(gate,self.slots_SP_list)
-            self.tickets_list.append(ticket.Ticket(current_slot,vehicle.Bike(company, plate_num, color, car_type)))
-                
-            return current_slot 
-            
-        
-        if car_type == "M":
-            current_slot = self.allocate_nearly_slot(gate,self.slots_MP_list)
-            self.tickets_list.append(ticket.Ticket(current_slot,vehicle.Car(company, plate_num, color, car_type)))
-            return current_slot 
-            
-               
-        if car_type == "L": 
-            current_slot = self.allocate_nearly_slot(gate,self.slots_LP_list)
-            self.tickets_list.append(ticket.Ticket(current_slot,vehicle.Bus(company, plate_num, color, car_type)))
-            return current_slot 
-    
+        current_slot = self.choose_slot(car_type, gate)
+        self.create_ticket(company, plate_num, color, car_type, current_slot)
+        return current_slot 
+
+    def choose_slot(self, car_type:str,gate:str):
+        dic = {"Bike":self.slots_SP_list, "Car":self.slots_MP_list, "Bus":self.slots_LP_list}
+        return self.allocate_nearly_slot(gate,dic[car_type]) #current slot
+
+    def create_ticket(self,company:str, plate_num:int, color:str,car_type:str, current_slot):
+        dic = {"Bike":vehicle.Bike, "Car":vehicle.Car, "Bus":vehicle.Bus}
+        self.tickets_list.append(ticket.Ticket(current_slot,dic[car_type](company, plate_num, color, car_type)))
+
     def remove_vehicle(self,plate_num:int):
         
         for ticket in self.tickets_list:
             if plate_num == ticket.get_plate_num():
                 
-                if ticket.type_vehicle == "M":
+                if ticket.type_vehicle == "Car":
                     for m in self.slots_MP_list:
                         if m.ID == ticket.slot_ID:
                             m.is_empty = True 
 
-                elif ticket.type_vehicle == "S":
+                elif ticket.type_vehicle == "Bike":
                     for s in self.slots_SP_list:
                         if s.ID == ticket.slot_ID:
                             s.is_empty = True
@@ -160,4 +153,3 @@ class AutomatedParkingLot:
 # b = []
 # b.extend(i.ID for i in a.slots_LP_list)
 # print(b)
-
